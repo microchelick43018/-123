@@ -20,6 +20,7 @@ void Message::GetInfoFromFile(fstream& fs)
 	fs.read((char*)&_courierName, sizeof(char) * 100);
 	fs.read((char*)&_senderName, sizeof(char) * 100);
 	fs.read((char*)&_recieverName, sizeof(char) * 100);
+	fs.read((char*)&_text, sizeof(char) * 300);
 	fs.read((char*)&_recieverAdress, sizeof(char) * 50);
 	fs.read((char*)&_isPayed, sizeof(bool));
 	fs.read((char*)&_priorety, sizeof(int));
@@ -61,6 +62,7 @@ void Message::PutInfoIntoFile(fstream& fs)
 	fs.write((char*)&_courierName, sizeof(char) * 100);
 	fs.write((char*)&_senderName, sizeof(char) * 100);
 	fs.write((char*)&_recieverName, sizeof(char) * 100);
+	fs.write((char*)&_text, sizeof(char) * 300);
 	fs.write((char*)&_recieverAdress, sizeof(char) * 50);
 	fs.write((char*)&_isPayed, sizeof(bool));
 	fs.write((char*)&_priorety, sizeof(int));
@@ -81,6 +83,11 @@ void Message::Set(string text, string senderName, string recieverName, string re
 void Message::SetStatus(int newStatus)
 {
 	_status = newStatus;
+}
+
+void Message::SetCourierName(string name)
+{
+	ConvertStringToMasChar(name, _courierName);
 }
 
 void Message::ShowInfo(bool forReciver)
@@ -199,13 +206,13 @@ void Message::ShowText()
 
 bool operator==(const Message& m1, const Message& m2)
 {
-	bool b1 = StrCmp1(m1._text, m2._text);
-	bool b2 = StrCmp1(m1._senderName, m2._senderName);
-	bool b3 = StrCmp1(m1._recieverName, m2._recieverName);
-	bool b4 = StrCmp1(m1._recieverAdress, m2._recieverAdress);
+	bool b1 = StrCmp1(m1._text, m2._text) == 0;
+	bool b2 = StrCmp1(m1._senderName, m2._senderName) == 0;
+	bool b3 = StrCmp1(m1._recieverName, m2._recieverName) == 0;
+	bool b4 = StrCmp1(m1._recieverAdress, m2._recieverAdress) == 0;
 	bool b5 = m1._isPayed == m2._isPayed;
 	bool b6 = m1._priorety == m2._priorety;
 	bool b7 = m1._status == m2._status;
-	bool b8 = StrCmp1(m1._courierName, m2._courierName);
+	bool b8 = StrCmp1(m1._courierName, m2._courierName) == 0;
 	return b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8;
 }

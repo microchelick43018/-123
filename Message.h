@@ -40,6 +40,8 @@ public:
 
 	void SetStatus(int newStatus);
 
+	void SetCourierName(string name);
+
 	void ShowInfo(bool forReciver);
 
 	void ShowInfoForAdmin();

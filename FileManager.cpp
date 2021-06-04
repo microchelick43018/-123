@@ -2,7 +2,7 @@
 const string FileManager::CLIENT_PATH = "Clients/";
 const string FileManager::ADMIN_PATH = "Admins/";
 const string FileManager::COURIER_PATH = "Couriers/";
-const string FileManager::OFFICE_PATH = "PostaOffice";
+const string FileManager::OFFICE_PATH = "PostalOffice";
 
 string FileManager::GetAdminPath()
 {

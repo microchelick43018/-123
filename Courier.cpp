@@ -31,6 +31,7 @@ void Courier::GetInfoFromFile(string fullName)
 {
 	fstream fs;
 	fs.open(FileManager::GetCourierPath() + fullName, ios::in | ios::binary);
+	ConvertStringToMasChar(fullName, FullName);
 	fs.read((char*)&Password, sizeof(char) * 100);
 	int count;
 	fs.read((char*)&count, sizeof(int));
@@ -95,6 +96,7 @@ void Courier::ServeMessage(PostalOffice& office)
 		reciever.AddIncomingMessage(_messages[choice]);
 	}
 	office.RemoveMessage(_messages[choice]);
+	RemoveMessage(_messages[choice]);
 }
 
 void Courier::ShowMessages()
@@ -104,6 +106,7 @@ void Courier::ShowMessages()
 		cout << "Письм нет!" << endl;
 		return;
 	}
+	cout.setf(ios::left);
 	cout << setw(6) << "№";
 	cout << setw(15) << "От кого";
 	cout << setw(15) << "Кому";
@@ -111,9 +114,13 @@ void Courier::ShowMessages()
 	cout << setw(15) << "Приоритет";
 	cout << setw(14) << "Статус";
 	cout << setw(14) << "Оплачен" << endl;
+	cout.unsetf(ios::left);
 	vector<Message>::iterator it = _messages.begin();
 	for (int i = 0; it != _messages.end(); i++, it++)
 	{
-		cout << setw(6) << i + 1 << " - "; (*it).ShowInfo(false);
+		cout.setf(ios::left);
+		cout << setw(6) << i + 1;
+		cout.unsetf(ios::left);
+		(*it).ShowInfo(false);
 	}
 }

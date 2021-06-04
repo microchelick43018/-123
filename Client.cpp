@@ -193,8 +193,8 @@ void Client::GetInfoFromFile(string fullName)
 	ConvertStringToMasChar(fullName, FullName);
 	fs.read((char*)&Password, sizeof(char) * 100);
 	fs.read((char*)&_balance, sizeof(int));
-	int incomingMessagesSize;
-	int outgoingMessagesSize;
+	int incomingMessagesSize = 0;
+	int outgoingMessagesSize = 0;
 	fs.read((char*)&incomingMessagesSize, sizeof(int));
 	Message mess;
 	for (int i = 0; i < incomingMessagesSize; i++)
@@ -305,7 +305,7 @@ void Client::ShowHistory()
 	cout << "1 - Просмотреть входящие сообщения." << endl;
 	cout << "2 - Просмотреть исходящие сообщения." << endl;
 	int choice = MakeAChoice(2);
-	list<Message>& messages = _incomingMessages;
+	list<Message> messages = _incomingMessages;
 	if (choice == 2)
 	{
 		isIncomingMessage = false;
@@ -414,8 +414,8 @@ void Client::ShowOutgoingMessages()
 	cout << setw(14) << "Статус";
 	cout << setw(14) << "Оплачен" << endl;
 	cout.unsetf(ios::left);
-	list<Message>::iterator it = _incomingMessages.begin();
-	for (int i = 0; it != _incomingMessages.end(); i++, it++)
+	list<Message>::iterator it = _outgoingMessages.begin();
+	for (int i = 0; it != _outgoingMessages.end(); i++, it++)
 	{
 		cout.setf(ios::left);
 		cout << setw(6) << i + 1;

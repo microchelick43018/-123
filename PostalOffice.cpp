@@ -29,6 +29,18 @@ Message& PostalOffice::GetMessage(int number)
 	return _messages[number];
 }
 
+Message& PostalOffice::GetMessage(const Message& mess)
+{
+	vector<Message>::iterator it = _messages.begin();
+	for (; it != _messages.end(); it++)
+	{
+		if (*it == mess)
+		{
+			return *it;
+		}
+	}
+}
+
 int PostalOffice::GetMessagesCount()
 {
 	return _messages.size();
@@ -79,6 +91,9 @@ void PostalOffice::ShowMessages()
 	vector<Message>::iterator it = _messages.begin();
 	for (int i = 0; it != _messages.end(); i++, it++)
 	{
-		cout << setw(6) << i + 1; (*it).ShowInfoForAdmin();
+		cout.setf(ios::left);
+		cout << setw(6) << i + 1; 
+		cout.unsetf(ios::left); 
+		(*it).ShowInfoForAdmin();
 	}
 }

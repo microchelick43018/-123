@@ -23,6 +23,8 @@ public:
 
 	Message& GetMessage(int number);
 
+	Message& GetMessage(const Message& mess);
+
 	int GetMessagesCount();
 
 	void PutInfoIntoFile();
