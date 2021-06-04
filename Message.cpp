@@ -216,3 +216,15 @@ bool operator==(const Message& m1, const Message& m2)
 	bool b8 = StrCmp1(m1._courierName, m2._courierName) == 0;
 	return b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8;
 }
+
+ostream& operator<<(ostream& os, Message& m)
+{
+	os << "Получатель: " << m._recieverName << endl;
+	os << "Отправитель: " << m._senderName << endl;
+	return os;
+}
+
+istream& operator>>(istream& is, Message& m)
+{
+	return is >> m._recieverName >> m._senderName;
+}

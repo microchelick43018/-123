@@ -142,6 +142,7 @@
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Courier.h" />
+    <ClInclude Include="ElementsWorker.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="InputChecker.h" />
     <ClInclude Include="MenuManager.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Courier.cpp" />
+    <ClCompile Include="ElementsWorker.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="InputChecker.cpp" />
     <ClCompile Include="MenuManager.cpp" />

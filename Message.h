@@ -49,5 +49,9 @@ public:
 	void ShowText();
 
 	friend bool operator==(const Message& m1, const Message& m2);
+
+	friend ostream& operator <<(ostream& os, Message& m);
+
+	friend istream& operator>>(istream& is, Message& m);
 };
 

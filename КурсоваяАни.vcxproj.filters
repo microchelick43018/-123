@@ -45,6 +45,9 @@
     <ClInclude Include="Message.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="ElementsWorker.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InputChecker.cpp">
@@ -78,6 +81,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Message.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ElementsWorker.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
